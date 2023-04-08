@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap");
+
+@font-face {
+  font-family: "Aeonik-Air";
+  src: url("https://vidor-main-dev.s3.eu-west-1.amazonaws.com/public/fonts/Aeonik/Aeonik-Air.otf")
+    format("opentype");
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aeonik-Regular";
+  src: url("https://vidor-main-dev.s3.eu-west-1.amazonaws.com/public/fonts/Aeonik/Aeonik-Regular.otf")
+    format("opentype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aeonik-Light";
+  src: url("https://vidor-main-dev.s3.eu-west-1.amazonaws.com/public/fonts/Aeonik/Aeonik-Light.otf")
+    format("opentype");
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aeonik-Medium";
+  src: url("https://vidor-main-dev.s3.eu-west-1.amazonaws.com/public/fonts/Aeonik/Aeonik-Medium.otf")
+    format("opentype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aeonik-Bold";
+  src: url("https://vidor-main-dev.s3.eu-west-1.amazonaws.com/public/fonts/Aeonik/Aeonik-Bold.otf")
+    format("opentype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aeonik-Black";
+  src: url("https://vidor-main-dev.s3.eu-west-1.amazonaws.com/public/fonts/Aeonik/Aeonik-Black.otf")
+    format("opentype");
+  font-weight: 800 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ClashDisplay-Variable";
+  src: url("https://vidor-main-dev.s3.eu-west-1.amazonaws.com/public/fonts/Clash+Display/ClashDisplay-Variable.woff2")
+      format("woff2"),
+    url("https://vidor-main-dev.s3.eu-west-1.amazonaws.com/public/fonts/Clash+Display/ClashDisplay-Variable.woff")
+      format("woff"),
+    url("https://vidor-main-dev.s3.eu-west-1.amazonaws.com/public/fonts/Clash+Display/ClashDisplay-Variable.ttf")
+      format("truetype");
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}

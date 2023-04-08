@@ -1,0 +1,267 @@
+@keyframes slideUpAndFade {
+	from {
+		opacity: 0;
+		transform: translateY(2px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.reaction-count-tooltip-content {
+	box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+	user-select: none;
+	transition: 0.2s all;
+	animation-duration: 400ms;
+	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+	will-change: transform, opacity;
+}
+.reaction-count-tooltip-content[data-state="instant-open"][data-side="top"] {
+	animation-name: slideUpAndFade;
+}
+
+@keyframes shake {
+	0% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(1px);
+	}
+	50% {
+		transform: translateX(-1px);
+	}
+	75% {
+		transform: translateX(1px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+.shake {
+	animation-name: shake;
+	animation-iteration-count: 2;
+	animation-duration: 400ms;
+	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+	will-change: transform, opacity;
+}
+
+.post-floating-bar.animation {
+    -webkit-transition: .2s all;
+    -o-transition: .2s all;
+    transition: .2s all;
+    transition-timing-function: ease-in;
+}
+.post-floating-bar {
+    bottom: -60px;
+	display: none;
+}
+.css-1fphdbq {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    z-index: 50;
+    display: flex;
+    height: 3rem;
+    width: 100%;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.css-5pszzi {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    // height: 3rem;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border-width: 0.5px;
+    --tw-border-opacity: 1;
+    border-color: rgb(226 232 240 / var(--tw-border-opacity));
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    padding: 0.25rem 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    --tw-text-opacity: 1;
+    color: rgb(30 41 59 / var(--tw-text-opacity));
+    --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow);
+}
+
+.css-bjn8wh {
+    position: relative;
+}
+
+.css-nxcj1s {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: transparent solid 2px !important;
+    outline-offset: 2px !important;
+}
+
+@media (min-width: 640px) {
+.css-379bt3 {
+    width: 2.5rem;
+}}
+.css-1s19zg0 {
+    position: absolute;
+    z-index: 50;
+    border-radius: 9999px;
+    padding: 0.5rem;
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+}
+@media (min-width: 640px){
+.css-yvom1w {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+.css-17crcq7 {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+.css-wfx56m {
+    height: 1.25rem;
+    width: 1.25rem;
+}}
+.css-wfx56m {
+    height: 1rem;
+    width: 1rem;
+    --tw-scale-x: 0.97;
+    --tw-scale-y: 0.97;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    stroke: currentcolor;
+    --tw-text-opacity: 1;
+    color: rgb(30 41 59 / var(--tw-text-opacity));
+}
+.css-6k6esx {
+    border-radius: 9999px;
+    padding: 0.5rem;
+}
+.css-17crcq7 {
+    height: 1rem;
+    width: 1rem;
+    stroke: currentcolor;
+    --tw-text-opacity: 1;
+    color: rgb(30 41 59 / var(--tw-text-opacity));
+}
+.css-yvom1w {
+    height: 1rem;
+    width: 1rem;
+    stroke: currentcolor;
+    --tw-text-opacity: 1;
+    color: rgb(30 41 59 / var(--tw-text-opacity));
+}
+.css-8d4lqw {
+    outline: transparent solid 2px !important;
+    outline-offset: 2px !important;
+}
+.css-1x6if5c {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    --tw-text-opacity: 1;
+    color: rgb(30 41 59 / var(--tw-text-opacity));
+    outline: transparent solid 2px !important;
+    outline-offset: 2px !important;
+}
+.css-4h4s9a {
+    margin: auto 0.5rem;
+    width: 1px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+    height: 1.25rem;
+}
+.css-s5zram {
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+}
+.css-1f6r0q1 {
+    cursor: pointer;
+    border-radius: 9999px;
+    padding: 0.5rem;
+    outline: transparent solid 2px !important;
+    outline-offset: 2px !important;
+}
+.css-1thgejq {
+    display: flex;
+    cursor: pointer;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: transparent solid 2px !important;
+    outline-offset: 2px !important;
+}
+.css-379bt3 {
+    position: relative;
+    display: flex;
+    width: 2rem;
+    cursor: pointer;
+    -webkit-box-align: center;
+    align-items: center;
+    outline: transparent solid 2px !important;
+    outline-offset: 2px !important;
+}
+
+.sc-ZOtfp .dropdown-menu {
+	padding: 0;
+}
+
+.sc-ZOtfp .dropdown-item {
+    padding: 12px 20px;
+	border-radius: 0px;
+	display: flex;
+    align-items: center;
+}
+
+.sc-ZOtfp .dropdown-item:hover {
+    background-color: #fafafa;
+	cursor: pointer;
+}
+
+.sc-ZOtfp .dropdown-menu .dropdown-item .icon {
+	display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    white-space: initial;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: #ffffff;
+    font-weight: 500;
+    border-color: #b2bec3;
+    margin-right: 8px;
+	width: 30px;
+	height: 30px;
+    padding: 6.4px 0;
+    border-radius: 7px;
+}
+
+.sc-ZOtfp .dropdown-divider {
+	margin: 0
+}
+
+.sc-ZOtfp .dropdown-menu .dropdown-item .icon svg {
+	width: 15px;
+	height: 15px;
+}
+
+.sc-ZOtfp :where(.css-dev-only-do-not-override-sk7ap8).ant-btn-default {
+	box-shadow: none;
+	height: unset
+}

@@ -1,0 +1,154 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 600;
+  color: #181818;
+  display: block;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+h1 {
+  font-size: 42px;
+  line-height: 48px;
+}
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 1;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+h5 {
+  font-size: 16px;
+  line-height: 0.6;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+.h1 {
+  font-size: 42px !important;
+  line-height: 48px !important;
+}
+@media screen and (max-width: 767px) {
+  .h1 {
+    font-size: 24px !important;
+    line-height: 28px !important;
+  }
+}
+
+.h2 {
+  font-size: 28px !important;
+  line-height: 42px !important;
+}
+
+.h3 {
+  font-size: 24px !important;
+  line-height: 28px !important;
+}
+
+.h4 {
+  font-size: 20px !important;
+  line-height: 24px !important;
+}
+
+.h5 {
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
+
+.h6 {
+  font-size: 14px !important;
+}
+
+.hp-caption {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.hp-p1-body {
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
+  font-size: 15px;
+  line-height: 21px;
+  color: #636e72;
+  font-weight: 400;
+}
+
+.hp-p2-body {
+  font-size: 14px;
+  line-height: 21px;
+  color: #636e72;
+  font-weight: 200;
+}
+
+.hp-button {
+  font-size: 14px;
+  line-height: 16px;
+  color: #636e72;
+  font-weight: 500;
+}
+
+.hp-placeholder {
+  font-size: 14px;
+  line-height: 16px;
+  color: #636e72;
+  font-weight: 300;
+}
+
+.hp-input-description {
+  font-size: 10px;
+  line-height: 12px;
+  color: #636e72;
+  font-weight: 500;
+}
+
+.hp-input-label {
+  font-size: 14px;
+  line-height: 16px;
+  color: #636e72;
+  font-weight: 500;
+}
+
+.hp-badge-text {
+  font-size: 12px;
+  line-height: 12px;
+  color: #636e72;
+  font-weight: 500;
+}
+
+.has-fw-regular {
+  font-weight: 400;
+}

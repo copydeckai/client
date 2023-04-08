@@ -1,0 +1,89 @@
+.dark-mode {
+  -webkit-transform: scale(0.55);
+  transform: scale(0.55);
+}
+.dark-mode {
+  cursor: pointer;
+  -webkit-transform: translate3D(0, 0, 0);
+  transform: translate3D(0, 0, 0);
+}
+.dark-mode input {
+  display: none;
+}
+.dark-mode input + span {
+  display: block;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  position: relative;
+  -webkit-box-shadow: inset 10px -14px 0 0 #d7d7d7;
+  box-shadow: inset 10px -14px 0 0 #d7d7d7;
+  -webkit-transform: scale(1) rotate(-2deg);
+  transform: scale(1) rotate(-2deg);
+  -webkit-transition: -webkit-box-shadow 0.5s ease 0s,
+    -webkit-transform 0.4s ease 0.1s;
+  transition: -webkit-box-shadow 0.5s ease 0s, -webkit-transform 0.4s ease 0.1s;
+  transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
+  transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s,
+    -webkit-box-shadow 0.5s ease 0s, -webkit-transform 0.4s ease 0.1s;
+}
+.dark-mode input + span:before {
+  content: "";
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+.dark-mode input + span:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: -4px 0 0 -4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-box-shadow: 0 -23px 0 #d7d7d7, 0 23px 0 #d7d7d7, 23px 0 0 #d7d7d7,
+    -23px 0 0 #d7d7d7, 15px 15px 0 #d7d7d7, -15px 15px 0 #d7d7d7,
+    15px -15px 0 #d7d7d7, -15px -15px 0 #d7d7d7;
+  box-shadow: 0 -23px 0 #d7d7d7, 0 23px 0 #d7d7d7, 23px 0 0 #d7d7d7,
+    -23px 0 0 #d7d7d7, 15px 15px 0 #d7d7d7, -15px 15px 0 #d7d7d7,
+    15px -15px 0 #d7d7d7, -15px -15px 0 #d7d7d7;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.dark-mode input:checked + span {
+  -webkit-box-shadow: inset 32px -32px 0 0 #e95402;
+  box-shadow: inset 32px -32px 0 0 #e95402;
+  -webkit-transform: scale(0.5) rotate(0deg);
+  transform: scale(0.5) rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease 0.1s,
+    -webkit-box-shadow 0.2s ease 0s;
+  transition: -webkit-transform 0.3s ease 0.1s, -webkit-box-shadow 0.2s ease 0s;
+  transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s;
+  transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s,
+    -webkit-transform 0.3s ease 0.1s, -webkit-box-shadow 0.2s ease 0s;
+}
+.dark-mode input:checked + span:before {
+  background: #d7d7d7;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: background-color 0.3s ease 0.1s;
+  transition: background-color 0.3s ease 0.1s;
+}
+.dark-mode input:checked + span:after {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-transition: -webkit-transform 0.5s ease 0.15s;
+  transition: -webkit-transform 0.5s ease 0.15s;
+  transition: transform 0.5s ease 0.15s;
+  transition: transform 0.5s ease 0.15s, -webkit-transform 0.5s ease 0.15s;
+}

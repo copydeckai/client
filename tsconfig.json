@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": ["es2017", "dom", "esnext"],
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "target": "es5",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "@assets/*": ["assets/*"],
+      "@copydeck/*": ["src/*"],
+      "@libs/*": ["src/libs/*"],
+      "@components/*": ["src/components/*"],
+      "@test/*": ["testUtils/*"]
+    },
+    "resolveJsonModule": true
+  },
+  "globals": {
+    "process": true
+  },
+  "exclude": ["node_modules"]
+}

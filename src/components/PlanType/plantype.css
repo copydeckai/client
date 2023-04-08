@@ -1,0 +1,38 @@
+.planType-modal_close {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-color: transparent;
+  border-radius: 50%;
+  background-color: #000;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  outline: none !important;
+  cursor: pointer;
+}
+
+.planType-modal_close svg {
+  display: block;
+  width: 15px;
+  height: 15px;
+  stroke: #fff;
+}
+
+.planType-modal_close:hover svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+}
