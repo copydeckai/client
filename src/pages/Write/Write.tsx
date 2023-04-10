@@ -1,7 +1,8 @@
 // import { Link } from "react-router-dom";
 import WriteNewEditor from "./views/WriteNew";
 import "./write.css";
-import { Button, Card } from "antd";
+import { ArrowRightOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 import React, { useState } from "react";
 
 interface WriteProps {
@@ -10,14 +11,17 @@ interface WriteProps {
 
 const Write: React.FC<WriteProps> = ({ toggleShowPlanType }) => {
   const [showEditor, setShowEditor] = useState(false);
+  const [storyContext, setStoryContext] = useState<string>("");
 
-  const startWriting = () => {
+  const startWriting = context => {
+    setStoryContext(context);
     setShowEditor(true);
   };
+
   return (
     <>
       {showEditor ? (
-        <WriteNewEditor toggleShowPlanType={toggleShowPlanType} />
+        <WriteNewEditor toggleShowPlanType={toggleShowPlanType} storyContext={storyContext} />
       ) : (
         <div className="hp-main-layout-content">
           <div className="row mb-32 gy-32">
@@ -30,76 +34,153 @@ const Write: React.FC<WriteProps> = ({ toggleShowPlanType }) => {
               </div>
             </div>
             <div className="col-12">
-              <div className="row g-32 sc-lhMiDA hjfTdl">
-                <div className="col-12 col-md-6 col-xl-4">
-                  <Card>
-                    <div className="text-center">
-                      <div className="card-body">
-                        <h6 className="mb-32 fw-medium hp-text-color-dark-0">
-                          I'm writing an article/blog
-                        </h6>
-                        <svg
-                          viewBox="0 0 24 24"
-                          height="30"
-                          width="30"
-                          aria-hidden="true"
-                          focusable="false"
-                          fill="currentColor"
-                          xmlns="http://www.w3.org/2000/svg"
-                          color="#888888"
-                          className="StyledIconBase-ea9ulj-0 hfwuWe"
-                        >
-                          <path fill="none" d="M0 0h24v24H0z"></path>
-                          <path d="M20 22H4a1 1 0 01-1-1V3a1 1 0 011-1h16a1 1 0 011 1v18a1 1 0 01-1 1zm-1-2V4H5v16h14zM7 6h4v4H7V6zm0 6h10v2H7v-2zm0 4h10v2H7v-2zm6-9h4v2h-4V7z"></path>
-                        </svg>
-                        <p className="sc-iCfMLu">
-                          Select this if you are writing an article, a blog or
-                          anything else non-fiction.
-                        </p>
-                        <Button
-                          className="btn btn-primary is-rounded"
-                          onClick={startWriting}
-                        >
-                          Start writing
-                        </Button>
+              <div className="mt-24 sc-lhMiDA hjfTdl">
+                <div className="item hp-border-color-dark-80 p-12 mb-16 col-12 rounded-5">
+                  <div className="d-flex align-items-center justify-content-between">
+                    <div className="row align-items-center">
+                      <div className="hp-flex-none w-auto pe-0 col">
+                        <div className="hp-cursor-pointer me-16">
+                          <div className="overflow-hidden d-flex hp-bg-danger-4 rounded-50">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24px"
+                              height="24px"
+                              viewBox="0 0 24 24"
+                              role="presentation"
+                            >
+                              <g transform="translate(3.61 2.75)">
+                                <path
+                                  d="M7.22.5H0"
+                                  transform="translate(4.766 12.446)"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="1.5px"
+                                ></path>
+                                <path
+                                  d="M7.22.5H0"
+                                  transform="translate(4.766 8.686)"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="1.5px"
+                                ></path>
+                                <path
+                                  d="M2.755.5H0"
+                                  transform="translate(4.766 4.927)"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="1.5px"
+                                ></path>
+                                <path
+                                  d="M0,9.25c0,6.937,2.1,9.25,8.391,9.25s8.391-2.313,8.391-9.25S14.685,0,8.391,0,0,2.313,0,9.25Z"
+                                  transform="translate(0)"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="1.5px"
+                                ></path>
+                              </g>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="hp-flex-none w-auto ps-0 col">
+                        <span className="d-block h4 m-0">Article/blog</span>
+                        {/* <span className="d-block hp-p1-body mt-4">
+                          if you are writing an article, a blog or anything
+                          else non-fiction.
+                        </span> */}
                       </div>
                     </div>
-                  </Card>
+
+                    <div className="text-end">
+                      <Button
+                        className="btn btn-primary btn-sm is-rounded"
+                        onClick={() => startWriting("ARTICLE_BLOG")}
+                      >
+                        <span>Start writing</span> 
+                        <span className="icon"><ArrowRightOutlined /></span>
+                      </Button>
+                    </div>
+                  </div>
                 </div>
-                <div className="col-12 col-md-6 col-xl-4">
-                  <Card>
-                    <div className="text-center">
-                      <div className="card-body">
-                        <h6 className="mb-32 fw-medium hp-text-color-dark-0">
-                          I'm writing a story
-                        </h6>
-                        <svg
-                          viewBox="0 0 24 24"
-                          height="30"
-                          width="30"
-                          aria-hidden="true"
-                          focusable="false"
-                          fill="currentColor"
-                          xmlns="http://www.w3.org/2000/svg"
-                          color="#888888"
-                          className="StyledIconBase-ea9ulj-0 hfwuWe"
-                        >
-                          <path fill="none" d="M0 0h24v24H0z"></path>
-                          <path d="M3 18.5V5a3 3 0 013-3h14a1 1 0 011 1v18a1 1 0 01-1 1H6.5A3.5 3.5 0 013 18.5zM19 20v-3H6.5a1.5 1.5 0 000 3H19zM5 15.337A3.486 3.486 0 016.5 15H19V4H6a1 1 0 00-1 1v10.337z"></path>
-                        </svg>
-                        <p className="sc-iCfMLu mb-4">
-                          Select this if you are writing a story or any other
-                          creative piece.
-                        </p>
-                        <Button
-                          className="btn btn-primary is-rounded"
-                          onClick={startWriting}
-                        >
-                          Start writing
-                        </Button>
+
+                <div className="item hp-border-color-dark-80 p-12 mb-16 col-12 rounded-5">
+                  <div className="d-flex align-items-center justify-content-between">
+                    <div className="row align-items-center">
+                      <div className="hp-flex-none w-auto pe-0 col">
+                        <div className="hp-cursor-pointer me-16">
+                          <div className="overflow-hidden d-flex hp-bg-success-4 rounded-50">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24px"
+                              height="24px"
+                              viewBox="0 0 24 24"
+                              role="presentation"
+                            >
+                              <g transform="translate(3.5 3.5)">
+                                <path
+                                  d="M0,.5H6.377"
+                                  transform="translate(9.835 15.508)"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="1.5px"
+                                ></path>
+                                <path
+                                  d="M11.808.609h0a3.042,3.042,0,0,0-4.258.607l-6.752,9C-.941,12.529.7,15.4.7,15.4s3.244.746,4.958-1.539l6.752-8.995A3.042,3.042,0,0,0,11.808.609Z"
+                                  transform="translate(0.75 0.75)"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="1.5px"
+                                ></path>
+                                <path
+                                  d="M0,0,4.864,3.651"
+                                  transform="translate(7.004 3.711)"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeMiterlimit="10"
+                                  strokeWidth="1.5px"
+                                ></path>
+                              </g>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="hp-flex-none w-auto ps-0 col">
+                        <span className="d-block h4 m-0">Fictional Story</span>
                       </div>
                     </div>
-                  </Card>
+
+                    <div className="text-end">
+                      <Button
+                        className="btn btn-primary btn-sm is-rounded"
+                        onClick={() => startWriting("FICTION_STORY")}
+                      >
+                        <span>Start writing</span> 
+                        <span className="icon"><ArrowRightOutlined /></span>
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

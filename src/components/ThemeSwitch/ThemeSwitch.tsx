@@ -34,18 +34,16 @@ const toggleTheme: ChangeEventHandler<HTMLInputElement> = e => {
 
 const ThemeSwitch = () => (
   <>
-    <div className="row align-items-center justify-content-end">
-      <div className="w-auto px-0">
-        <div className="d-flex align-items-center me-4 hp-header-search-button">
-          <label className="dark-mode">
-            <input
-              type="checkbox"
-              onChange={toggleTheme}
-              defaultChecked={defaultLight}
-            />
-            <span></span>
-          </label>
-        </div>
+    <div className="w-auto px-0">
+      <div className="d-flex align-items-center me-4 hp-header-search-button">
+        <label className="dark-mode">
+          <input
+            type="checkbox"
+            onChange={toggleTheme}
+            defaultChecked={defaultLight}
+          />
+          <span></span>
+        </label>
       </div>
     </div>
   </>

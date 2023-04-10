@@ -152,6 +152,7 @@ img {
 @media screen and (max-width: 767px) {
   .hp-main-layout-content {
     padding: 0 16px;
+    padding-top: 90px;
   }
 }
 @media screen and (max-width: 1199px) {
@@ -693,4 +694,8 @@ ul {
   pointer-events: none;
   opacity: 0.4;
   cursor: default !important;
+}
+
+.ant-card .ant-card-actions > li {
+  margin: 0;
 }

@@ -67,6 +67,7 @@ const AppRoutes: React.FC = () => {
   const { user } = useAuth();
   const [, dispatchAppState] = useAppState();
   const [showPlanType, setShowPlanType] = useState(false);
+
   const toggleShowPlanType = () => {
     setShowPlanType(!showPlanType);
   };

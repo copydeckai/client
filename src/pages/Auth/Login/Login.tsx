@@ -16,7 +16,8 @@ interface LoginCardProps {
 }
 
 const Login: React.FC<LoginCardProps> = () => {
-  const { login, resendConfirm, dispatch, error, loading, isActive } = useAuth();
+  const { login, resendConfirm, dispatch, error, loading, isActive } =
+    useAuth();
 
   // const navigate = useNavigator();
 
@@ -46,13 +47,13 @@ const Login: React.FC<LoginCardProps> = () => {
   };
 
   const resendConfirmClick = async () => {
-      try {
-        await resendConfirm();
-        message.success("Confirmation email sent");
-      } catch (err) {
-        message.error(err.response?.data.message);
-        return [];
-      }
+    try {
+      await resendConfirm();
+      message.success("Confirmation email sent");
+    } catch (err) {
+      message.error(err.response?.data.message);
+      return [];
+    }
     return [];
   };
 
@@ -173,7 +174,11 @@ const Login: React.FC<LoginCardProps> = () => {
                       <div className="extra-small-text">or log in with</div>
                       <div className="sign-up-divider"></div>
                     </div>
-                    <button className="social-sign-up w-inline-block" type="button" onClick={ssoGoogle}>
+                    <button
+                      className="social-sign-up w-inline-block"
+                      type="button"
+                      onClick={ssoGoogle}
+                    >
                       <img
                         src="./assets/62851dcc1205d6034471f709_search.png"
                         loading="lazy"

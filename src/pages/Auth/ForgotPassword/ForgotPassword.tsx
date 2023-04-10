@@ -30,8 +30,8 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = () => {
     } else {
       try {
         const response = await checkForgot(data);
-        navigate("/login");
         message.success(response.message);
+        navigate("/login");
         dispatch({ type: "loginSuccess" });
       } catch (err) {
         errorTracker.captureException(err);

@@ -7,6 +7,7 @@ import editIcon from "@assets/icons/Edit.svg";
 import logoutIcon from "@assets/icons/Logout.svg";
 import starIcon from "@assets/icons/Star.svg";
 import userIcon from "@assets/icons/User.svg";
+import defaultAvatar from "@assets/images/default.png";
 import icon from "@assets/images/icon.svg";
 import logoLight from "@assets/images/logo-light.svg";
 import useNavigator from "@copydeck/hooks/useNavigator";
@@ -31,9 +32,7 @@ const SideBar: React.FC = () => {
     navigate("/");
   }
   //   const userAvatar = user?.details.avatar
-  const userAvatar = user?.avatar
-    ? user?.avatar
-    : "https://avatars.githubusercontent.com/u/29050206?s=120&v=4";
+  const userAvatar = user?.avatar ? user?.avatar : defaultAvatar;
 
   return (
     <div className="hp-sidebar hp-bg-color-black-20">

@@ -27,10 +27,10 @@ const WriteView = () => {
           <SVG className="hp-logo sc-ieecCq bJuKmw hp-dark-none" src={icon} />
         </Link>
         <div className="sc-kfPuZi ePnpsE">
-          <div className="me-24">
+          <div className="">
             <ThemeSwitch />
           </div>
-          <div className="sc-fKVqWL eperKY">
+          <div className="sc-fKVqWL eperKY ms-24">
             <a
               // htmlType="submit"
               className="btn btn-primary is-rounded"

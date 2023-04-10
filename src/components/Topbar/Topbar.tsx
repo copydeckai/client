@@ -1,12 +1,21 @@
-// import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
 import "./topbar.css";
+import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
+import chatIcon from "@assets/icons/Chat.svg";
+import editIcon from "@assets/icons/Edit.svg";
+import logoutIcon from "@assets/icons/Logout.svg";
+import starIcon from "@assets/icons/Star.svg";
+import userIcon from "@assets/icons/User.svg";
+import defaultAvatar from "@assets/images/default.png";
+import logoDark from "@assets/images/logo.svg";
 import ThemeSwitch from "@copydeck/components/ThemeSwitch";
-// import { useAuth } from "@copydeck/contexts/authContext";
 import { useSearch } from "@copydeck/contexts/searchContext";
 import useNavigator from "@copydeck/hooks/useNavigator";
 // import useOutsideClick from "@copydeck/hooks/useOutsideClick";
-// import axios from "axios";
+import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+import SVG from "react-inlinesvg";
+import { Link, NavLink } from "react-router-dom";
 
 interface TopBarProps {
   currentUrl: any;
@@ -14,6 +23,8 @@ interface TopBarProps {
 }
 
 const TopBar: React.FC<TopBarProps> = ({ fetchSearch, currentUrl }) => {
+  const { user, setUser } = useAuth();
+  const activeClassName = ({ isActive }) => (isActive ? "active" : "");
   const { setSearchResults, dispatch } = useSearch();
   const navigate = useNavigator();
   const [timer, setTimer] = useState(null);
@@ -21,6 +32,27 @@ const TopBar: React.FC<TopBarProps> = ({ fetchSearch, currentUrl }) => {
   const searchbarRef = useRef();
   const searchInputRef = useRef();
   const [onChange, setOnChange] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [showNavMenu, setShowNavMenu] = useState(false);
+
+  const toggleMobileSearch = () => {
+    setShowSearch(show => !show);
+    setKeyword("");
+    setSearchResults(null);
+    navigate("/");
+  };
+
+  const toggleMobileNav = () => {
+    setShowNavMenu(show => !show);
+  };
+
+  async function logout() {
+    await axios.post("/logout");
+    setUser(null);
+    navigate("/");
+  }
+
+  const userAvatar = user?.avatar ? user?.avatar : defaultAvatar;
 
   // useOutsideClick(searchbarRef, () => {
   // if (searchInputToggle) {
@@ -91,164 +123,280 @@ const TopBar: React.FC<TopBarProps> = ({ fetchSearch, currentUrl }) => {
   return (
     <>
       <header>
-        <div className="row w-100 m-0">
-          <div className="col px-0">
-            <div className="row w-100 align-items-center justify-content-between position-relative">
-              <div
-                className="col w-auto hp-flex-none hp-mobile-sidebar-button me-24 px-0"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#mobileMenu"
-                aria-controls="mobileMenu"
-              >
-                <button type="button" className="btn btn-text btn-icon-only">
-                  <i className="ri-menu-fill hp-text-color-black-80 hp-text-color-dark-30 lh-1"></i>
-                </button>
-              </div>
+        <div className="container_">
+          <div
+            className="col w-auto hp-flex-none hp-mobile-sidebar-button me-24 px-0"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mobileMenu"
+            aria-controls="mobileMenu"
+          >
+            <button
+              type="button"
+              onClick={toggleMobileNav}
+              className="btn btn-text btn-icon-only"
+            >
+              <MenuOutlined style={{ fontSize: 19 }} />
+            </button>
+          </div>
 
-              <div className="hp-header-text-info col col-lg-14 col-xl-16 hp-header-start-text d-flex align-items-center hp-horizontal-none">
-                <div className="hp-header-search col active">
-                  <div role="presentation" className="jss2578">
-                    {currentUrl !== "/write" && (
-                      <div className="jss2580" tabIndex={-1} ref={searchbarRef}>
-                        <div className="MuiPaper-root jss2579 MuiPaper-elevation1 MuiPaper-rounded">
-                          <div className="jss2738">
-                            <svg
-                              className="MuiSvgIcon-root jss2535 jss2739"
-                              focusable="false"
-                              viewBox="0 0 32 32"
-                              aria-hidden="true"
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="32"
-                              height="32"
-                              fill="none"
-                            >
-                              <circle
-                                cx="14"
-                                cy="14"
-                                r="11.25"
-                                stroke="currentColor"
-                                strokeWidth="1.5"
-                              ></circle>
-                              <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="1.5"
-                                d="m22 22 7 7"
-                              ></path>
-                            </svg>
-                            <input
-                              ref={searchInputRef}
-                              autoComplete="off"
-                              className="jss2737"
-                              placeholder="Type '?' to search your writing."
-                              aria-autocomplete="list"
-                              aria-labelledby="downshift-33-label"
-                              id="downshift-33-input"
-                              // onFocus={handleSearchInputToggle}
-                              // onBlur={clearSearchInputToggle}
-                              onChange={handleChange}
-                              onKeyPress={handleKeyPress}
-                            />
-                          </div>
-                        </div>
+          <div
+            className={`hp-header-search ${
+              showSearch ? "active" : ""
+            } d-flex align-items-center hp-horizontal-none`}
+          >
+            <div className="col">
+              <div role="presentation" className="jss2578">
+                {currentUrl !== "/write" && (
+                  <div className="jss2580" tabIndex={-1} ref={searchbarRef}>
+                    <div className="MuiPaper-root jss2579 MuiPaper-elevation1 MuiPaper-rounded">
+                      <div className="jss2738">
+                        <svg
+                          className="MuiSvgIcon-root jss2535 jss2739"
+                          focusable="false"
+                          viewBox="0 0 32 32"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="32"
+                          height="32"
+                          fill="none"
+                        >
+                          <circle
+                            cx="14"
+                            cy="14"
+                            r="11.25"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                          ></circle>
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="1.5"
+                            d="m22 22 7 7"
+                          ></path>
+                        </svg>
+                        <input
+                          ref={searchInputRef}
+                          autoFocus
+                          autoComplete="off"
+                          className="jss2737"
+                          placeholder="Type '?' to search your writing."
+                          aria-autocomplete="list"
+                          aria-labelledby="downshift-33-label"
+                          id="downshift-33-input"
+                          value={keyword}
+                          // onFocus={handleSearchInputToggle}
+                          // onBlur={clearSearchInputToggle}
+                          onChange={handleChange}
+                          onKeyPress={handleKeyPress}
+                        />
                       </div>
-                    )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="right">
+            <div className="col w-auto hp-flex-none hp-mobile-sidebar-button d-block me-24 px-0">
+              <button
+                type="button"
+                onClick={toggleMobileSearch}
+                className="btn btn-icon-only"
+              >
+                <svg
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 32 32"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="none"
+                >
+                  <circle
+                    cx="14"
+                    cy="14"
+                    r="11.25"
+                    stroke="#ada9a9"
+                    strokeWidth="1.5"
+                  ></circle>
+                  <path
+                    stroke="#ada9a9"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
+                    d="m22 22 7 7"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <ThemeSwitch />
+          </div>
+        </div>
+      </header>
+      <div
+        className={`offcanvas offcanvas-start hp-mobile-sidebar mobile-nav ${
+          showNavMenu ? "show" : ""
+        }`}
+      >
+        <div className="offcanvas-header justify-content-between align-items-center ms-16 me-8 mt-16 p-0">
+          <div className="w-auto px-0">
+            <div className="hp-header-logo d-flex align-items-center">
+              <Link to="/" onClick={toggleMobileNav} className="position-relative">
+                <img
+                  className="hp-logo hp-sidebar-visible hp-dark-none"
+                  src={logoDark}
+                  alt="logo"
+                />
+                <img
+                  className="hp-logo hp-sidebar-visible hp-dark-block"
+                  src={logoDark}
+                  alt="logo"
+                />
+              </Link>
+            </div>
+          </div>
+
+          <div
+            className="w-auto px-0 hp-sidebar-collapse-button hp-sidebar-hidden"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+            onClick={toggleMobileNav}
+          >
+            <button
+              type="button"
+              className="btn btn-text btn-icon-only bg-transparent"
+            >
+              <CloseOutlined />
+            </button>
+          </div>
+        </div>
+
+        <div className="hp-sidebar border-end border-black-40 hp-border-color-dark-80">
+          <div className="hp-sidebar-container">
+            <div className="hp-sidebar-header-menu">
+              <div className="row justify-content-between align-items-end mx-0">
+                <div className="w-auto px-0">
+                  <div className="hp-header-logo d-flex align-items-center">
+                    <Link to="/" className="position-relative" onClick={toggleMobileNav}>
+                      <img
+                        className="hp-logo hp-sidebar-visible hp-dark-none"
+                        src={logoDark}
+                        alt="logo"
+                      />
+                      <img
+                        className="hp-logo hp-sidebar-visible hp-dark-block"
+                        src={logoDark}
+                        alt="logo"
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>
 
-              <div className="hp-horizontal-logo-menu d-flex align-items-center w-auto">
-                <div className="col hp-flex-none w-auto hp-horizontal-block hp-horizontal-menu ps-24">
-                  <ul className="d-flex flex-wrap align-items-center">
-                    <li className="px-6">
-                      <a
-                        href=""
-                        className="px-12 py-4"
-                        data-bs-toggle="dropdown"
-                      >
-                        <span>Dashboards</span>
-                        <i className="ri-arrow-down-s-line"></i>
-                      </a>
+              <ul>
+                <li>
+                  <ul>
+                    <li>
+                      <NavLink className={activeClassName} to="/" onClick={toggleMobileNav}>
+                        <span>
+                          <span className="submenu-item-icon">
+                            <SVG src={editIcon} />
+                          </span>
 
-                      <ul className="dropdown-menu">
-                        <li className="dropend">
-                          <a href="dashboard-analytics.html">
-                            <span>
-                              <span className="submenu-item-icon">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="18"
-                                  height="18"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                >
-                                  <path
-                                    d="M8.97 22h6c5 0 7-2 7-7V9c0-5-2-7-7-7h-6c-5 0-7 2-7 7v6c0 5 2 7 7 7Z"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>
-                                  <path
-                                    d="m1.97 12.7 6-.02c.75 0 1.59.57 1.87 1.27l1.14 2.88c.26.65.67.65.93 0l2.29-5.81c.22-.56.63-.58.91-.05l1.04 1.97c.31.59 1.11 1.07 1.77 1.07h4.06"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>
-                                </svg>
-                              </span>
-
-                              <span>Analytics</span>
-                            </span>
-                          </a>
-                        </li>
-
-                        <li className="dropend">
-                          <a href="dashboard-ecommerce.html">
-                            <span>
-                              <span className="submenu-item-icon">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="18"
-                                  height="18"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                >
-                                  <path
-                                    d="M3 9.11v5.77C3 17 3 17 5 18.35l5.5 3.18c.83.48 2.18.48 3 0l5.5-3.18c2-1.35 2-1.35 2-3.46V9.11C21 7 21 7 19 5.65l-5.5-3.18c-.82-.48-2.17-.48-3 0L5 5.65C3 7 3 7 3 9.11Z"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>
-                                  <path
-                                    d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                  ></path>
-                                </svg>
-                              </span>
-
-                              <span>E-Commerce</span>
-                            </span>
-                          </a>
-                        </li>
-                      </ul>
+                          <span>My Writings</span>
+                        </span>
+                      </NavLink>
                     </li>
                   </ul>
+                </li>
+
+                <li>
+                  <div className="menu-title">Account</div>
+                  <ul>
+                    <li>
+                      <NavLink className={activeClassName} to="/account" onClick={toggleMobileNav}>
+                        <span>
+                          <span className="submenu-item-icon">
+                            <SVG src={userIcon} />
+                          </span>
+
+                          <span>My Account</span>
+                        </span>
+                      </NavLink>
+                    </li>
+
+                    <li>
+                      <a
+                        target="_blank"
+                        href="http://localhost:3000/pricing?ref=webapp&page=HomePageMenu"
+                      >
+                        <span>
+                          <div className="submenu-item-icon">
+                            <SVG src={starIcon} />
+                          </div>
+
+                          <span>Get Premium</span>
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <div className="menu-title">Resources</div>
+
+                  <ul>
+                    <li>
+                      <a href="">
+                        <span>
+                          <span className="submenu-item-icon">
+                            <SVG src={chatIcon} />
+                          </span>
+                          <span>Help & Guides</span>
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div className="row justify-content-between align-items-center hp-sidebar-footer mx-0 hp-bg-color-dark-90">
+              <div className="divider border-black-40 hp-border-color-dark-70 hp-sidebar-hidden mt-0 px-0"></div>
+
+              <div className="col">
+                <div className="row align-items-center">
+                  <div className="w-auto px-0">
+                    <div className="avatar-item bg-primary-4 d-flex align-items-center justify-content-center rounded-circle">
+                      <img
+                        src={userAvatar}
+                        height="100%"
+                        className="hp-img-cover"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="w-auto ms-8 px-0 hp-sidebar-hidden mt-4">
+                    <span className="d-block hp-text-color-dark-0 hp-p1-body lh-1">{`${user?.firstName} ${user?.lastName}`}</span>
+                    <span className="user-email">{user?.email}</span>
+                  </div>
                 </div>
               </div>
-              <div className="col w-auto pe-0">
-                <ThemeSwitch />
+
+              <div className="col hp-flex-none w-auto px-0 hp-sidebar-hidden">
+                <a className="hp-cursor-pointer" onClick={logout}>
+                  <SVG src={logoutIcon} />
+                </a>
               </div>
             </div>
           </div>
         </div>
-      </header>
+      </div>
+      <div
+        className={`${showNavMenu ? "offcanvas-backdrop fade show" : ""}`}
+      ></div>
     </>
   );
 };

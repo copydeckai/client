@@ -3,7 +3,7 @@
 // import validator from 'validator';
 import Editor from "../../components/Editor";
 import Sidebar from "../../components/Sidebar";
-import { QuestionCircleOutlined } from "@ant-design/icons";
+import { CloseCircleFilled, RobotFilled } from "@ant-design/icons";
 import Loader from "@components/Loader";
 import ThemeSwitch from "@copydeck/components/ThemeSwitch";
 import { axiosInstance } from "@copydeck/config";
@@ -13,7 +13,7 @@ import { getCompletion } from "@copydeck/libs/openaiClient";
 import useAutosizeTextArea from "@copydeck/utils/useAutosizeTextarea";
 // import { Button } from "@mantine/core";
 // import GPTCompletion from "components/completion";
-import { Button, FloatButton, Input, message, Switch } from "antd";
+import { Button, Input, message, Switch } from "antd";
 import { CreateCompletionRequest } from "openai";
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -35,6 +35,7 @@ const WriteUpdate: React.FC<WriteUpdateProps> = ({ toggleShowPlanType }) => {
     // openaiRequest
     setOpenaiRequest
   ] = useState<CreateCompletionRequest | undefined>(undefined);
+  const [showMobileSidebar, setShowMobileSidebar] = useState(false);
   const [onChange, setOnChange] = useState(false);
   const [showShare, setShowShare] = useState(false);
   const dropRef = useRef(null);
@@ -52,6 +53,10 @@ const WriteUpdate: React.FC<WriteUpdateProps> = ({ toggleShowPlanType }) => {
   const [maxTokens, setMaxTokens] = useState("150");
   const [prompt, setPrompt] = useState("");
   const titleTextAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  const toggleMobileSidebar = () => {
+    setShowMobileSidebar(show => !show);
+  };
 
   useEffect(() => {
     setCredits(user.aiUsage.credits);
@@ -310,7 +315,7 @@ const WriteUpdate: React.FC<WriteUpdateProps> = ({ toggleShowPlanType }) => {
 
   const copyLink = () => {
     navigator.clipboard.writeText(
-      `http://localhost:3001/read/${data[0]?.urlString}`
+      `https://copydeck.grayshapes.co/read/${data[0]?.urlString}`
     );
     setCopySuccess(true);
     setTimeout(() => {
@@ -351,12 +356,24 @@ const WriteUpdate: React.FC<WriteUpdateProps> = ({ toggleShowPlanType }) => {
         setPrompt={setPrompt}
         prompt={prompt}
         credits={credits}
+        showMobileSidebar={showMobileSidebar}
+        wordCount={wordCount}
+        charCount={charCount}
       />
       <div className="sc-fkJVfC fEWUPr">
         {data.length ? (
           <>
             <div className="sc-cZMNgc jPRwbG">
               <div className="sc-jUosCB klZYnl">
+                <div className="jPwjWq" onClick={toggleMobileSidebar}>
+                  {showMobileSidebar ? (
+                    <CloseCircleFilled
+                      style={{ fontSize: 24, color: "#cdcdcd" }}
+                    />
+                  ) : (
+                    <RobotFilled style={{ fontSize: 24, color: "#cdcdcd" }} />
+                  )}
+                </div>
                 <div className="sc-jQrDum hcyzbe">
                   <div className="sc-fvxzrP kqJoff">
                     <Button
@@ -452,11 +469,11 @@ const WriteUpdate: React.FC<WriteUpdateProps> = ({ toggleShowPlanType }) => {
                   <p className="sc-iCfMLu sc-fyrocj hXricx kWgNA">characters</p>
                 </div>
               </div>
-              <FloatButton
+              {/* <FloatButton
                 icon={<QuestionCircleOutlined />}
                 type="default"
                 style={{ right: 24 }}
-              />
+              /> */}
             </div>
           </>
         ) : (

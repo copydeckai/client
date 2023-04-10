@@ -11890,6 +11890,8 @@ fieldset:disabled .btn {
 }
 
 .offcanvas.show {
+  width: 300px;
+  visibility: visible;
   -webkit-transform: none;
   transform: none;
 }

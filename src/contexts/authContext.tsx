@@ -145,11 +145,13 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
   };
 
   const resendConfirm = async () => {
-    await axios.post(`/auth/resend-confirm`);
+    const { data } = await axios.post(`/auth/resend-confirm`);
+    return data;
   };
 
   const checkForgot = async payload => {
-    await axios.post(`/auth/forgot-password`, payload);
+    const { data } = await axios.post(`/auth/forgot-password`, payload);
+    return data;
   };
 
   useEffect(() => {

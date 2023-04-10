@@ -109,7 +109,7 @@ const PasswordSettings = () => {
                 </Space>
               </form>
             </div>
-            <div className="hp-profile-action-btn">
+            <div className="hp-profile-action-btn mt-16 mt-sm-0">
               <Button
                 onClick={changePasswordAction}
                 loading={loading}

@@ -13,13 +13,13 @@ const AuthLayout: React.FC = () => {
     document.body.classList.remove("dark");
   }, []);
   return (
-  <div className="utilities-section">
-    <div className="utilities-form-column">
-      <Outlet />
+    <div className="utilities-section">
+      <div className="utilities-form-column">
+        <Outlet />
+      </div>
     </div>
-  </div>
-);
-}
+  );
+};
 
 AuthLayout.displayName = "AuthLayout";
 export default AuthLayout;
