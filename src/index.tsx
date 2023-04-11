@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import Write from "./pages/Write";
 import WriteUpdate from "./pages/Write/views/WriteUpdate";
+import SocialAuth from "./pages/Auth/SocialAuth";
 import errorTracker from "./services/errorTracking";
 import {
   accountPageUrl,
@@ -157,6 +158,7 @@ const AppRoutes: React.FC = () => {
                 />
               </Route>
             </Route>
+            <Route path="/auth/:token" element={<SocialAuth />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         ) : (
