@@ -167,7 +167,7 @@ const Write: React.FC<WriteProps> = ({ toggleShowPlanType }) => {
                       </div>
 
                       <div className="hp-flex-none w-auto ps-0 col">
-                        <span className="d-block h4 m-0">Fictional Story</span>
+                        <span className="d-block h4 m-0">Fictional story</span>
                       </div>
                     </div>
 
