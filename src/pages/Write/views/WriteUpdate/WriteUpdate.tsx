@@ -43,6 +43,7 @@ const WriteUpdate: React.FC<WriteUpdateProps> = ({ toggleShowPlanType }) => {
   const [disabled, setDisabled] = useState(true);
   const [btnText, setBtnText] = useState("Saved");
   const [title, setTitle] = useState("");
+  const [storyContext, setStoryContext] = useState("");
   const [isPublic, setIsPublic] = useState(false);
   const [content, setContent] = useState("");
   const [credits, setCredits] = useState(0);
@@ -79,6 +80,7 @@ const WriteUpdate: React.FC<WriteUpdateProps> = ({ toggleShowPlanType }) => {
     setIsPublic(data[0]?.isPublic);
     setWordCount(data[0]?.wordCount);
     setCharCount(data[0]?.charCount);
+    setStoryContext(data[0]?.aiSettings?.storyBackground)
   }, [data]);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -161,7 +163,6 @@ const WriteUpdate: React.FC<WriteUpdateProps> = ({ toggleShowPlanType }) => {
   }
 
   const checkPrompt = async () => {
-    // e.preventDefault();
     setLoading(true);
     if (credits > 0) {
       const request = generatePrompt();
@@ -191,8 +192,12 @@ const WriteUpdate: React.FC<WriteUpdateProps> = ({ toggleShowPlanType }) => {
                 }
               };
               typeWriter();
-              if (completion.choices[0].text.length) {
-                updateAiCredit(completion.choices[0].text.length);
+
+              const countChoices = completion.choices[0].text.length;
+
+              if (countChoices) {
+                toggleMobileSidebar();
+                updateAiCredit(countChoices);
               }
               // else {
               //   message.error('Supply the AI with additional information.');
@@ -359,6 +364,7 @@ const WriteUpdate: React.FC<WriteUpdateProps> = ({ toggleShowPlanType }) => {
         showMobileSidebar={showMobileSidebar}
         wordCount={wordCount}
         charCount={charCount}
+        storyContext={storyContext}
       />
       <div className="sc-fkJVfC fEWUPr">
         {data.length ? (
