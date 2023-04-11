@@ -223,11 +223,11 @@ const WriteNew: React.FC<WriteNewProps> = ({
                 }
               };
               typeWriter();
-              // const finalCount = choiceCount;
 
               const countChoices = completion.choices[0].text.length;
 
               if (countChoices) {
+                toggleMobileSidebar();
                 updateAiCredit(countChoices);
               }
               // else {
