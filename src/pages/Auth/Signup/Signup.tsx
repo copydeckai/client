@@ -6,6 +6,7 @@ import { WindowTitle } from "@copydeck/components/WindowTitle";
 import { useAuth } from "@copydeck/contexts/authContext";
 import { SubmitPromise } from "@copydeck/hooks/useForm";
 import errorTracker from "@copydeck/services/errorTracking";
+import { API_URL } from "../../../config";
 // import useNavigator from "@copydeck/hooks/useNavigator";
 import { Button, message } from "antd";
 // import axios from "axios";
@@ -72,6 +73,10 @@ const Signup: React.FC<SignupCardProps> = () => {
   const emailParam = params.get("email");
 
   const emailAddress = emailParam;
+
+  const ssoGoogle = () => {
+    window.open(`${API_URL}/auth/google`, "_self");
+  };
 
   return (
     <>
@@ -175,10 +180,8 @@ const Signup: React.FC<SignupCardProps> = () => {
                     <div className="extra-small-text">or sign up with</div>
                     <div className="sign-up-divider"></div>
                   </div>
-                  <a href="" className="social-sign-up w-inline-block">
+                  <button onClick={ssoGoogle} className="social-sign-up w-inline-block">
                     <img
-                      src="./assets/62851dcc1205d6034471f709_search.png"
-                      loading="lazy"
                       width="24"
                       srcSet="
                     https://assets.website-files.com/62851dcc1205d63c8b71f57f/62851dcc1205d6034471f709_search-p-500.png 500w,
@@ -191,7 +194,7 @@ const Signup: React.FC<SignupCardProps> = () => {
                     <div className="social-sign-up-text">
                       Signup With Google
                     </div>
-                  </a>
+                  </button>
                 </>
               )}
             </SignupForm>
