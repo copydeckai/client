@@ -274,6 +274,7 @@ const Editor: React.FC<EditorProps> = ({
         className={className}
         // onChange={onChange}
         dangerouslySetInnerHTML={{ __html: value }}
+        style={{fontSize: "16px"}}
         {...others}
       />
       {selectedText ? (
