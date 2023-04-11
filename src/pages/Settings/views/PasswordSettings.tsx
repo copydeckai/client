@@ -16,7 +16,6 @@ const PasswordSettings = () => {
   const { Text, Title } = Typography;
   const [loading, setLoading] = useState(false);
 
-  const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -29,7 +28,6 @@ const PasswordSettings = () => {
         return;
       }
       const payload = {
-        password,
         newPassword,
         confirmPassword
       };
@@ -40,18 +38,18 @@ const PasswordSettings = () => {
       message.success("Password Updated");
     } catch (err) {
       setLoading(false);
-      message.error(err.message);
+      message.error(err.response.data.message);
       return [];
     }
   }
 
   const formDisabled = () => {
-    if (password && newPassword && confirmPassword) {
-      if (password.length !== 0 || newPassword !== confirmPassword) {
-        return true;
+    if (newPassword && confirmPassword) {
+      if (newPassword !== confirmPassword) {
+        return false;
       }
     }
-    return false;
+    return true;
   };
 
   return (
@@ -67,19 +65,6 @@ const PasswordSettings = () => {
                   size="middle"
                   style={{ display: "flex" }}
                 >
-                  <div>
-                    <Text>Current Password</Text>
-                    <Input.Password
-                      className="mt-4"
-                      size="large"
-                      placeholder="current password"
-                      iconRender={visible =>
-                        visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                      }
-                      value={password}
-                      onChange={e => setPassword(e.target.value)}
-                    />
-                  </div>
                   <div>
                     <Text>New Password</Text>
                     <Input.Password
