@@ -2,6 +2,7 @@ import NotFound from "../NotFound";
 import ForgotPassword from "../pages/Auth/ForgotPassword";
 import Login from "../pages/Auth/Login";
 import ResetPassword from "../pages/Auth/ResetPassword";
+import SocialAuth from "../pages/Auth/SocialAuth";
 import Signup from "../pages/Auth/Signup";
 import Verification from "../pages/Auth/Verification";
 import WriteView from "../pages/Write/views/WriteView";
@@ -28,12 +29,9 @@ const AuthRouter: React.FC = () => (
       <Route path={loginPath} element={<Login />} />
       <Route path={signupPath} element={<Signup />} />
       <Route path={passwordResetPath} element={<ForgotPassword />} />
+      <Route path="/auth/:token" element={<SocialAuth />} />
       <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
       <Route path="/verify-identity/:id/:token" element={<Verification />} />
-      {/* <Route
-            path={socialSignInCallbackPath}
-            element={<SocialViewComponent />}
-          /> */}
     </Route>
     <Route path={readWritingUrl} element={<WriteView />} />
     <Route element={<FrontLayout />}>
