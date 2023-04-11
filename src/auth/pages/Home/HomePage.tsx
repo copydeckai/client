@@ -37,7 +37,6 @@ const HomePage: React.FC = () => {
                 aria-label="Form"
               >
                 <input
-                  autoFocus
                   type="email"
                   className="email-capture-field w-input"
                   maxLength={256}
