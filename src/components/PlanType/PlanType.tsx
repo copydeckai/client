@@ -27,9 +27,9 @@ const PlanType: React.FC<PlanTypeProps> = ({ toggleShowPlanType }) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -37,7 +37,7 @@ const PlanType: React.FC<PlanTypeProps> = ({ toggleShowPlanType }) => {
         </button>
 
         <div className="text-container center _37-5rem xl-margin">
-          <h1 className="h1-title s-margin">Write 10x faster</h1>
+          <h1 className="h1-title s-margin">Out of credits?</h1>
           <p className="l-paragraph">
             Imagine having one of the greatest writers in the world helping you
             write, at the click of a button.
@@ -73,7 +73,7 @@ const PlanType: React.FC<PlanTypeProps> = ({ toggleShowPlanType }) => {
                 </div>
               </div>
               <div className="pricing-top">
-                <div className="plan-name s-margin">Basic</div>
+                <div className="plan-name s-margin">Trial</div>
                 <div className="pricing-top-wrap">
                   <div className="m-number">5 Free</div>
                   <div className="pricing-small-text">Credits</div>
