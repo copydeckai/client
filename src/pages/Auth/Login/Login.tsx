@@ -5,6 +5,7 @@ import { WindowTitle } from "@copydeck/components/WindowTitle";
 import { useAuth } from "@copydeck/contexts/authContext";
 import { SubmitPromise } from "@copydeck/hooks/useForm";
 import errorTracker from "@copydeck/services/errorTracking";
+import { API_URL } from "../../../config";
 // import axios from "axios";
 import { Button, message } from "antd";
 import React from "react";
@@ -58,7 +59,7 @@ const Login: React.FC<LoginCardProps> = () => {
   };
 
   const ssoGoogle = () => {
-    window.open("http://localhost:5001/auth/google", "_self");
+    window.open(`${API_URL}/auth/google`, "_self");
   };
 
   return (
@@ -180,8 +181,6 @@ const Login: React.FC<LoginCardProps> = () => {
                       onClick={ssoGoogle}
                     >
                       <img
-                        src="./assets/62851dcc1205d6034471f709_search.png"
-                        loading="lazy"
                         width="24"
                         srcSet="
                         https://assets.website-files.com/62851dcc1205d63c8b71f57f/62851dcc1205d6034471f709_search-p-500.png 500w,
