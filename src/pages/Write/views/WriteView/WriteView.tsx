@@ -31,12 +31,12 @@ const WriteView = () => {
             <ThemeSwitch />
           </div>
           <div className="sc-fKVqWL eperKY ms-24">
-            <a
-              // htmlType="submit"
+            <Link
+              to="/signup"
               className="btn btn-primary is-rounded"
             >
               Write with Copydeck
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -329,15 +329,14 @@ const TopBar: React.FC<TopBarProps> = ({ fetchSearch, currentUrl }) => {
 
                     <li>
                       <a
-                        target="_blank"
-                        href="http://localhost:3000/pricing?ref=webapp&page=HomePageMenu"
+                        href="#"
                       >
                         <span>
                           <div className="submenu-item-icon">
                             <SVG src={starIcon} />
                           </div>
 
-                          <span>Get Premium</span>
+                          <span>Get Credits</span>
                         </span>
                       </a>
                     </li>

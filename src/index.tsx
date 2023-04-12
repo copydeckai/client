@@ -13,11 +13,13 @@ import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import Write from "./pages/Write";
 import WriteUpdate from "./pages/Write/views/WriteUpdate";
+import WriteView from "./pages/Write/views/WriteView";
 import SocialAuth from "./pages/Auth/SocialAuth";
 import errorTracker from "./services/errorTracking";
 import {
   accountPageUrl,
   homePageUrl,
+  readWritingUrl,
   updateWritingUrl,
   writingSection
 } from "./urls";
@@ -136,6 +138,7 @@ const AppRoutes: React.FC = () => {
                 <Route path={accountPageUrl} element={<Settings />} />
               </Route>
             </Route>
+            <Route path={readWritingUrl} element={<WriteView />} />
             <Route
               element={
                 <EditorLayout

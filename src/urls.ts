@@ -2,7 +2,7 @@ import { stringifyQs } from "@copydeck/utils/urls";
 
 export const homePageUrl = "/";
 export const searchUrl = `/:search`;
-
+export const readWritingUrl = `/read/:id`;
 // Account
 export const accountPageUrl = "/account";
 
